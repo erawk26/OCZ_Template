@@ -1,0 +1,257 @@
+//------// Global Styles //------//
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box !important;
+}
+
+* {
+	transition: all 1s ease, color .25s ease-in-out;
+}
+
+body, html {
+	font-family: $fontBody;
+	//font-size: $base-font-size;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+body {
+	padding-top: 110px
+}
+
+a {
+	color: initial;
+	text-decoration: none;
+	&:hover {
+		color: $dk-grey;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	//font-family: $fontHead;
+	font-weight: 500;
+}
+
+a#intro {
+	position: absolute;
+	top: -100px;
+}
+
+ul {
+	list-style: none;
+	@include marding;
+	li {
+		@include marding;
+	}
+}
+
+img.responsive {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+.screen-reader {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.tooltip * {
+	border: none !important;
+}
+
+.lt-ital {
+	font-family: $aller-light-italic;
+	strong {
+		font-family: $aller-bold;
+	}
+}
+.ital {
+	font-family: $aller-italic;
+	strong {
+		font-family: $aller-bold;
+	}
+}
+.light {
+	font-family: $aller-light;
+}
+.bold {
+	font-family: $aller-bold;
+}
+.bold-ital {
+	font-family: $aller-bold-italic;
+}
+
+.center {
+	@include flex();
+}
+
+.three-col, .two-col {
+	@include flex(center, stretch, $wrap: wrap);
+	& > * {
+		flex: 1
+	}
+}
+
+.flexsb {
+	@include flex(space-between, $wrap: wrap);
+}
+
+.clearfix:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.bdr {
+	border: $bdr;
+}
+
+//layout debugging (dev only)
+.ul {
+	@include marding();
+	border-bottom: 2px solid white;
+}
+
+.r45 {
+	transform: rotate(-45deg);
+}
+
+.uc {
+	text-transform: uppercase;
+}
+
+.red {
+	color: $red-ocz
+}
+
+.green {
+	color: $grn-ocz
+}
+
+.gray-bg {
+	background: $dk-gray-ocz;
+	color: $wht-ocz
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family: $fontIcon;
+	color: $grn-ocz;
+	font-style: normal;
+	font-weight: normal;
+	speak: none;
+	display: inline-block;
+	text-decoration: inherit;
+	// width: 1em;
+	// margin-right: .2em;
+	text-align: center;
+	// opacity: .8;
+
+	// For safety - reset parent styles, that can break glyph codes
+	font-variant: normal;
+	text-transform: none;
+
+	// fix buttons height, for twitter bootstrap
+	line-height: 1em;
+
+	// Animation center compensation - margins should be symmetric
+	// remove if not needed
+	// margin-left: .2em;
+
+	// you can be more comfortable with increased icons size
+	// font-size: 120%;
+
+	// Font smoothing. That was taken from TWBS
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	// Uncomment for 3D effect
+	// text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3);
+}
+
+.icon-tools:before {
+	content: '\e800';
+}
+
+/* '' */
+.icon-key:before {
+	content: '\e801';
+}
+
+/* '' */
+.icon-options:before {
+	content: '\e809';
+}
+/* '' */
+//hr {
+//	&.star-dark, &.star-light {
+//		max-width: 15rem;
+//		padding: 0;
+//		text-align: center;
+//		border: none;
+//		border-top: solid .25rem;
+//		margin-top: 2.5rem;
+//		margin-bottom: 2.5rem;
+//		&:after {
+//			position: relative;
+//			top: -.8em;
+//			display: inline-block;
+//			padding: 0 .25em;
+//			content: '\f005';
+//			font-family: $fontIcon;
+//			font-size: 2em;
+//		}
+//	}
+//	&.star-light {
+//		border-color: #fff;
+//		&:after {
+//			color: #fff;
+//			background-color: #18bc9c;
+//
+//		}
+//		background-color: #18bc9c;
+//	}
+//	&.star-dark {
+//		border-color: #2c3e50;
+//		&:after {
+//			color: #2c3e50;
+//			background-color: #fff;
+//		}
+//	}
+//}
+
+.para-wrapper {
+	width: 100%;
+	background: $dk-gray-ocz;
+	overflow: hidden;
+	position: relative;
+	.para-img {
+		opacity: 0.75;
+		position: absolute;
+		width: 100%;
+		left: 0;
+		//* Adjust the height (or width), and offset the element's position based
+		//* on the aspect of your images
+		height: 150%;
+		top: -15%;
+		background-position: center top;
+		background-repeat: no-repeat;
+		background-size: cover;
+		transform: translate3d(0, 0, 0);
+	}
+}

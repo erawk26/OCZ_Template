@@ -1,0 +1,17 @@
+//- In 'includes' all paths to assets should be relative to the index.pug file,
+//- like so './images/image.jpg',
+//- and not './../images/image.jpg'
+a#back-to-top.back-to-top(href="#top" title="Back to Top")
+	.screen-reader Back to Top
+	include ../images/chevron-up.svg
+footer
+	ul.menu
+		li
+			a.uc(href="#") Contact Us
+		li
+			a.uc(href="#") Careers
+		li
+			a(href="#") Lipsum.com
+	.img-wrapper
+		img.logo.responsive(width='100px' src='./images/logo_ko.png')
+		img.li.responsive(width='100px' src='./images/logo_linkedin.png')

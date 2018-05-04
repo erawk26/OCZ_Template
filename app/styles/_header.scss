@@ -1,0 +1,252 @@
+.main-nav {
+	a {
+		display: flex;
+		height: 100%;
+		font-size: .8em;
+		@include marding(0, 5px 13px 5px 3px);
+		&.logo {
+			@include flex;
+			@include marding(0, 0 40px);
+			max-width: 285px;
+		}
+	}
+}
+
+header {
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	right: 0;
+	nav {
+		@include not-mobile{box-shadow: 0 0 20px 10px rgba(#000, .35);}
+		margin: 0;
+		height: 125px;
+		&.sticky {
+			background: $wht-ocz;
+			position: fixed;
+			overflow: visible;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 1000;
+		}
+	}
+	.flex-wrapper {
+		@include mobile{box-shadow: 0 0 20px 10px rgba(#000, .35);}
+		background: $wht-ocz;
+		@include flex(space-between, stretch);
+		height: 100%;
+		@include set-max-width;
+	}
+	ul.menu {
+		@include flex(flex-end, flex-end, $wrap: nowrap);
+		li {
+			a {
+				@include flex;
+				text-align: center
+			}
+			@include skew-right;
+			display: inline-block;
+			min-width: 125px;
+			padding: 20px 0 20px 40px;
+		}
+		.invis {
+			display: block;
+			width: 0;
+			height: 0;
+			overflow: visible;
+			position: relative
+		}
+
+	}
+}
+.mobile-menu {
+	*{transition: all .25s ease-in-out;}
+	position: relative;
+	margin-right:35px;
+	@media (min-width: $tablet-breakpoint) {
+		display: none;
+	}
+	@include flex($direction: column);
+	ul {
+		@include flex($direction: column);
+	}
+	a#hamburger {
+		@include flex;
+	}
+	.hamburger {
+		width: 55px;
+		height: 45px;
+		position: relative;
+		margin: 50px auto;
+		transform: rotate(0deg);
+		transition: 0.5s ease-in-out;
+		cursor: pointer;
+		span {
+			display: block;
+			position: absolute;
+			height: 7px;
+			width: 50%;
+			background: $dk-gray-ocz;
+			opacity: 1;
+			transform: rotate(0deg);
+			transition: 0.25s ease-in-out;
+			&:nth-child(even) {
+				left: 50%;
+				border-radius: 0 9px 9px 0;
+			}
+
+			&:nth-child(odd) {
+				left: 0px;
+				border-radius: 9px 0 0 9px;
+			}
+
+			&:nth-child(1),
+			&:nth-child(2) {
+				top: 0px;
+			}
+
+			&:nth-child(3),
+			&:nth-child(4) {
+				top: 18px;
+			}
+
+			&:nth-child(5),
+			&:nth-child(6) {
+				top: 36px;
+			}
+		}
+	}
+	.collapse {
+		opacity: 0;
+		height: 0;
+		position: fixed;
+		display:block;
+		background: rgba($dk-gray-ocz, .85);
+		right: 0;
+		left:0;
+		top: 120px;
+		bottom:0;
+		padding:20px;
+		z-index: -3;
+		.top a {font-size: 1.5em}
+		.bottom a {font-size: 2.5em}
+		li {
+			a { font-family: $fontHead;
+				text-align: left;
+				justify-content: flex-end;
+				color:$wht-ocz;
+				&:visited{color:$wht-ocz}
+				&:hover,&:active{color:$grn-ocz;}
+			}
+			padding: 15px 0;
+			&:after {
+				display: none
+			}
+		}
+	}
+	&.opened{
+		.hamburger span {
+			&:nth-child(1),
+			&:nth-child(6) {
+				transform: rotate(45deg);
+			}
+			&:nth-child(2),
+			&:nth-child(5) {
+				transform: rotate(-45deg);
+			}
+
+			&:nth-child(1) {
+				left: 5px;
+				top: 7px;
+			}
+
+			&:nth-child(2) {
+				left: calc(50% - 5px);
+				top: 7px;
+			}
+
+			&:nth-child(3) {
+				left: -50%;
+				opacity: 0;
+			}
+
+			&:nth-child(4) {
+				left: 100%;
+				opacity: 0;
+			}
+			&:nth-child(5) {
+				left: 5px;
+				top: 29px;
+			}
+			&:nth-child(6) {
+				left: calc(50% - 5px);
+				top: 29px;
+			}
+		}
+		.collapse{
+		opacity:1;height:auto;}
+}}
+.menu-wrapper {
+	@media (max-width: $tablet-breakpoint - 1) {
+		display: none;
+	}
+	position: relative;
+	min-width: 75%;
+	.top {
+		margin-right: 30px;
+		a {
+			font-size: .85em
+		}
+		li {
+			&:hover {
+				a {
+					color: $grn-ocz;
+				}
+
+				&:after {
+					border-left: 1px solid rgba($dk-gray-ocz, .25);
+					border-right: 1px solid rgba($dk-gray-ocz, .25);
+				}
+			}
+		}
+	}
+	.bottom {
+		text-transform: uppercase;
+		position: absolute;
+		z-index: 101;
+		bottom: -15px;
+		right: 40px;
+		&:after {
+			background: $wht-ocz;
+			box-shadow: 0 10px 20px 0 rgba(#000, .35);
+			content: " ";
+			position: absolute;
+			display: block;
+			width: 1000%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			transform-origin: bottom left;
+			-ms-transform: skew($base-skew, 0deg);
+			-webkit-transform: skew($base-skew, 0deg);
+			transform: skew($base-skew, 0deg);
+		}
+		li {
+			a {
+				padding: 0 20px 0 10px;
+			}
+			height: 75px;
+			&:hover {
+				a {
+					color: $wht-ocz
+				}
+				&:after {
+					background: $dk-gray-ocz;
+				}
+			}
+		}
+	}
+}

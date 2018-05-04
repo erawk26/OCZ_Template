@@ -1,0 +1,44 @@
+footer {
+	background: $dk-gray-ocz;
+	padding:20px 10px;
+	.menu {
+		@include set-max-width(700px);
+		@include flex(space-around);
+		font-family: $aller-bold-italic;
+		padding: 20px;
+		border-bottom:1px solid $wht-ocz;
+		max-width:80%;
+		li {
+			a {
+				color: $wht-ocz;
+				font-size: .78em;
+			}
+			display: inline-block;
+			margin: 10px 5px;
+		}
+	}
+	.img-wrapper {
+		@include flex;
+	}
+	img {margin:30px;
+		&.li {
+			opacity: .35
+		}
+	}
+}
+
+.back-to-top {
+	opacity: 0;
+	width:40px;
+	height:40px;
+	position: fixed;
+	cursor: pointer;
+	bottom: 25px;
+	right: 25px;
+	display: inline-block;
+	transition: all 0.25s linear;
+	z-index: 3;
+	#chevron-up{fill:$grn-ocz}
+	//&:hover {
+	//}
+}

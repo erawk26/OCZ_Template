@@ -1,0 +1,71 @@
+//------// Forms //------//
+.form-group {
+  padding: 5px;
+  min-width: 100%;
+  margin-bottom: 5px;
+
+}
+
+.form-group.short {
+  @media (min-width: 500px) {
+    max-width: 50%;
+    width: 50%;
+    min-width: 50%;
+  }
+}
+
+form {
+  color: $blue;
+  font-weight: $bold;
+  label {
+    @extend .uc;
+    font-size: 16px;
+    @media(min-width: $bp1) {
+      font-size: 20px;
+    }
+    text-indent: 5px;
+  }
+  input,
+  select,
+  textarea,
+  .form-control {
+    $shadow: inset 1px 1px 4px 0 #444;
+    @include border-radius($br2);
+    -moz-box-shadow: $shadow;
+    -webkit-box-shadow: $shadow;
+    box-shadow: $shadow;
+    font-size: 14px;
+    @media (min-width: $bp1) {
+      font-size: 18px;
+    }
+    color: #000;
+    background: shade($grey, 15);
+    font-weight: $regular;
+    padding: 2px 8px;
+    width: 100%;
+    &[disabled]{
+      background: shade($grey, 20);
+    }
+
+  }
+  input[type=checkbox],input[type=radio] {
+    @include box-shadow(0 0 0 0 shade($grey, 15));
+  }
+
+  .file-btn {
+    input[type='file'] {
+      position: fixed;
+      top: -1000px;
+    }
+    cursor: pointer;
+    display: inline-block;
+  }
+  .btn-block{
+    font-size: 15px;
+    @media(min-width: 500px) {
+      font-size: 20px;
+    }
+
+    &:last-child {margin: 10px 5px 0;}
+  }
+}
