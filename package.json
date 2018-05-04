@@ -21,7 +21,6 @@
     "scss"
   ],
   "dependencies": {
-    "classie": "^1.0.0",
     "parallax-scroll": "^0.3.0",
     "path": "^0.12.7",
     "smoothscroll": "^0.4.0"
