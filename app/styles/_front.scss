@@ -154,7 +154,7 @@ header, footer, section {
 				line-height: 1.5;
 				opacity: 0;
 			}
-			&:hover {
+			@mixin green-hover{
 				background: $grn-ocz;
 				> * {
 					color: $wht-ocz
@@ -173,6 +173,15 @@ header, footer, section {
 					height: auto;
 					opacity: 1;
 				}
+			}//local mixin because @extend wont work inside of a media query
+			&:hover {
+				@include green-hover;
+			}
+			@include not-desktop {//force hover state at phone screen widths
+				@include green-hover;
+			}
+			@media(max-width:660px){
+				border-top: 1px solid $wht-ocz;
 			}
 		}
 	}

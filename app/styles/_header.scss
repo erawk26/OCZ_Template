@@ -19,9 +19,12 @@ header {
 	left: 0;
 	right: 0;
 	nav {
-		@include not-mobile{box-shadow: 0 0 20px 10px rgba(#000, .35);}
+		@include not-mobile {
+			box-shadow: 0 0 20px 10px rgba(#000, .35);
+		}
 		margin: 0;
 		height: 125px;
+		@include not-desktop{height:90px}
 		&.sticky {
 			background: $wht-ocz;
 			position: fixed;
@@ -33,7 +36,9 @@ header {
 		}
 	}
 	.flex-wrapper {
-		@include mobile{box-shadow: 0 0 20px 10px rgba(#000, .35);}
+		@include mobile {
+			box-shadow: 0 0 20px 10px rgba(#000, .35);
+		}
 		background: $wht-ocz;
 		@include flex(space-between, stretch);
 		height: 100%;
@@ -61,11 +66,11 @@ header {
 
 	}
 }
+
 .mobile-menu {
-	*{transition: all .25s ease-in-out;}
 	position: relative;
-	margin-right:35px;
-	@media (min-width: $tablet-breakpoint) {
+	margin-right: 35px;
+	@include desktop{
 		display: none;
 	}
 	@include flex($direction: column);
@@ -98,13 +103,13 @@ header {
 			}
 
 			&:nth-child(odd) {
-				left: 0px;
+				left: 0;
 				border-radius: 9px 0 0 9px;
 			}
 
 			&:nth-child(1),
 			&:nth-child(2) {
-				top: 0px;
+				top: 0;
 			}
 
 			&:nth-child(3),
@@ -119,34 +124,46 @@ header {
 		}
 	}
 	.collapse {
-		opacity: 0;
-		height: 0;
+		transition: all .15s ease-out;
 		position: fixed;
-		display:block;
+		display: block;
 		background: rgba($dk-gray-ocz, .85);
 		right: 0;
-		left:0;
-		top: 120px;
-		bottom:0;
-		padding:20px;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		transform: translate(150%,0);
+		padding: 135px 20px 20px;
 		z-index: -3;
-		.top li a {font-size: 1.5em}
-		.bottom li a {font-size: 2.5em}
+		.top {
+			padding-top: 15px;
+			li a {
+				font-size: 1.5em
+			}
+		}
+		.bottom li a {
+			font-size: 2.5em
+		}
 		li {
-			a { font-family: $fontHead;
+			a {
+				font-family: $fontHead;
 				text-align: left;
 				justify-content: flex-end;
-				color:$wht-ocz;
-				&:visited{color:$wht-ocz}
-				&:hover,&:active{color:$grn-ocz;}
+				color: $wht-ocz;
+				&:visited {
+					color: $wht-ocz
+				}
+				&:hover, &:active {
+					color: $grn-ocz;
+				}
 			}
-			padding: 5px 0;
+			padding: 0;
 			&:after {
 				display: none
 			}
 		}
 	}
-	&.opened{
+	&.opened {
 		.hamburger span {
 			&:nth-child(1),
 			&:nth-child(6) {
@@ -185,11 +202,15 @@ header {
 				top: 29px;
 			}
 		}
-		.collapse{
-		opacity:1;height:auto;}
-}}
+		.collapse {
+			transition: all .65s ease-in;
+			transform: translate(0) scale(1);
+		}
+	}
+}
+
 .menu-wrapper {
-	@media (max-width: $tablet-breakpoint - 1) {
+	@include not-desktop {
 		display: none;
 	}
 	position: relative;

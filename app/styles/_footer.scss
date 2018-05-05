@@ -38,7 +38,7 @@ footer {
 	display: inline-block;
 	transition: all 0.25s linear;
 	z-index: 3;
-	#chevron-up{fill:$grn-ocz}
+	#chevron-up{fill:$grn-ocz;filter:drop-shadow(16px 16px 20px $wht-ocz);}
 	//&:hover {
 	//}
 }
