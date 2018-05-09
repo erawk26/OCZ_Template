@@ -1,13 +1,13 @@
-const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const PurifyCSSPlugin = require('purifycss-webpack')
-const BabiliPlugin = require('babili-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const PurifyCSSPlugin = require('purifycss-webpack');
+const BabiliPlugin = require('babili-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const publicPath = '/'
+const publicPath = '/';
 
-exports.publicPath = publicPath
+exports.publicPath = publicPath;
 
 exports.devServer = ({host, port} = {}) => ({
 	devServer: {
@@ -38,7 +38,7 @@ exports.devServer = ({host, port} = {}) => ({
 			warnings: false
 		}
 	}
-})
+});
 
 exports.loadPug = (options) => ({
 	module: {
@@ -57,14 +57,12 @@ exports.loadPug = (options) => ({
 			}
 		]
 	}
-})
-
+});
 exports.extractBundles = (bundles) => ({
 	plugins: bundles.map((bundle) => (
 		new webpack.optimize.CommonsChunkPlugin(bundle)
 	))
-})
-
+});
 exports.lintJS = ({include, exclude, options}) => ({
 	module: {
 		rules: [
@@ -78,7 +76,7 @@ exports.lintJS = ({include, exclude, options}) => ({
 			}
 		]
 	}
-})
+});
 
 const sharedCSSLoaders = [
 	{
@@ -87,20 +85,20 @@ const sharedCSSLoaders = [
 			localIdentName: '[hash:base64:5]'
 		}
 	}
-]
+];
 
 exports.autoprefix = () => ({
 	loader: 'postcss-loader',
 	options: {
 		plugins: () => [require('autoprefixer')]
 	}
-})
+});
 
 exports.purifyCSS = (options) => ({
 	plugins: [
 		new PurifyCSSPlugin(options)
 	]
-})
+});
 
 exports.minifyCSS = ({options}) => ({
 	plugins: [
@@ -109,7 +107,7 @@ exports.minifyCSS = ({options}) => ({
 			canPrint: true // false for analyzer
 		})
 	]
-})
+});
 
 exports.loadCSS = ({include, exclude, use} = {}) => ({
 	module: {
@@ -129,14 +127,14 @@ exports.loadCSS = ({include, exclude, use} = {}) => ({
 			}
 		]
 	}
-})
+});
 
 exports.extractCSS = ({include, exclude, use} = {}) => {
 	// Output extracted CSS to a file
 	const plugin = new ExtractTextPlugin({
 		filename: 'styles/[name].[contenthash:8].css',
 		allChunks: true
-	})
+	});
 
 	return {
 		module: {
@@ -155,8 +153,8 @@ exports.extractCSS = ({include, exclude, use} = {}) => {
 			]
 		},
 		plugins: [plugin]
-	}
-}
+	};
+};
 
 exports.loadImages = ({include, exclude, options} = {}) => ({
 	module: {
@@ -174,7 +172,7 @@ exports.loadImages = ({include, exclude, options} = {}) => ({
 			}
 		]
 	}
-})
+});
 
 exports.optimizeImages = ({include, exclude} = {}) => ({
 	module: {
@@ -186,12 +184,13 @@ exports.optimizeImages = ({include, exclude} = {}) => ({
 				exclude,
 
 				use: {
+
 					loader: 'image-webpack-loader',
 					options: {
-						bypassOnDebug: true,
+						bypassOnDebug: false,
 						mozjpeg: {
-							progressive: true,
-							quality: 65
+							progressive: false,
+							quality: 80
 						},
 						// optipng.enabled: false will disable optipng
 						optipng: {
@@ -203,17 +202,17 @@ exports.optimizeImages = ({include, exclude} = {}) => ({
 						},
 						gifsicle: {
 							interlaced: false
-						},
-						// the webp option will enable WEBP
-						webp: {
-							quality: 75
 						}
+						// the webp option will enable WEBP
+						// webp: {
+						// 	quality: 75
+						// }
 					}
 				}
 			}
 		]
 	}
-})
+});
 
 exports.loadFonts = ({include, exclude, options} = {}) => ({
 	module: {
@@ -232,7 +231,7 @@ exports.loadFonts = ({include, exclude, options} = {}) => ({
 			}
 		]
 	}
-})
+});
 
 exports.loadJS = ({include, exclude, options} = {}) => ({
 	module: {
@@ -248,34 +247,32 @@ exports.loadJS = ({include, exclude, options} = {}) => ({
 			}
 		]
 	}
-})
+});
 
 exports.minifyJS = () => ({
 	plugins: [
 		new BabiliPlugin()
 	]
-})
+});
 
 exports.setFreeVariable = (key, value) => {
-	const env = {}
-	env[key] = JSON.stringify(value)
+	const env = {};
+	env[key] = JSON.stringify(value);
 
 	return {
 		plugins: [
 			new webpack.DefinePlugin(env)
 		]
-	}
-}
+	};
+};
 
 exports.page = ({
 	                path = '',
-	                template = require.resolve(
-		                'html-webpack-plugin/default_index.ejs'
-	                ),
+	                template = require.resolve('html-webpack-plugin/default_index.ejs'),
 	                title,
 	                entry,
 	                chunks
-                } = {}) => ({
+} = {}) => ({
 	entry,
 	plugins: [
 		new HtmlWebpackPlugin({
@@ -285,4 +282,4 @@ exports.page = ({
 			chunks
 		})
 	]
-})
+});
