@@ -67,6 +67,10 @@ header {
 	}
 }
 
+$stroke:$dk-gray-ocz;
+$menu-bg:$stroke;
+$menu-link-hover:$grn-ocz;
+$menu-link:$wht-ocz;
 .mobile-menu {
 	position: relative;
 	margin-right: 35px;
@@ -93,7 +97,7 @@ header {
 			position: absolute;
 			height: 7px;
 			width: 50%;
-			background: $dk-gray-ocz;
+			background: $stroke;
 			opacity: 1;
 			transform: rotate(0deg);
 			transition: 0.25s ease-in-out;
@@ -127,7 +131,7 @@ header {
 		transition: all .15s ease-out;
 		position: fixed;
 		display: block;
-		background: rgba($dk-gray-ocz, .85);
+		background: rgba($menu-bg, .85);
 		right: 0;
 		left: 0;
 		top: 0;
@@ -149,12 +153,12 @@ header {
 				font-family: $fontHead;
 				text-align: left;
 				justify-content: flex-end;
-				color: $wht-ocz;
+				color: $menu-link;
 				&:visited {
-					color: $wht-ocz
+					color: $menu-link
 				}
 				&:hover, &:active {
-					color: $grn-ocz;
+					color: $menu-link-hover;
 				}
 			}
 			padding: 0;

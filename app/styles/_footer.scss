@@ -1,13 +1,13 @@
 footer {
 	background: $dk-gray-ocz;
-	padding:20px 10px;
+	padding: 20px 10px;
 	.menu {
 		@include set-max-width(700px);
 		@include flex(space-around);
 		font-family: $aller-bold-italic;
 		padding: 20px;
-		border-bottom:1px solid $wht-ocz;
-		max-width:80%;
+		border-bottom: 1px solid $wht-ocz;
+		max-width: 80%;
 		li {
 			a {
 				color: $wht-ocz;
@@ -20,7 +20,8 @@ footer {
 	.img-wrapper {
 		@include flex;
 	}
-	img {margin:30px;
+	img {
+		margin: 30px;
 		&.li {
 			opacity: .35
 		}
@@ -29,8 +30,8 @@ footer {
 
 .back-to-top {
 	opacity: 0;
-	width:40px;
-	height:40px;
+	width: 40px;
+	height: 40px;
 	position: fixed;
 	cursor: pointer;
 	bottom: 25px;
@@ -38,7 +39,10 @@ footer {
 	display: inline-block;
 	transition: all 0.25s linear;
 	z-index: 3;
-	#chevron-up{fill:$grn-ocz;filter:drop-shadow(16px 16px 20px $wht-ocz);}
+	#chevron-up {
+		fill: $grn-ocz;
+		//filter: drop-shadow(16px 16px 20px $wht-ocz);
+	}
 	//&:hover {
 	//}
 }
